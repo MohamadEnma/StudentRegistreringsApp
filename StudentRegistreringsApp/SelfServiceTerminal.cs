@@ -44,9 +44,18 @@ namespace StudentRegistreringsApp
 
         public void ReadFirstPost()
         {
-            Console.WriteLine(dbCtx.Students?.FirstOrDefault());
-            Console.WriteLine("Din var första inlägg i databasen");
-            Terminal();
+            try {
+                Console.WriteLine(dbCtx.Students?.FirstOrDefault());
+                Console.WriteLine("Din var första inlägg i databasen");
+                Terminal();
+            } catch (Exception ex) 
+            { 
+                Console.WriteLine($"An error occurred: {ex.Message.ToString()}");
+            }finally
+            {
+                RunApp();
+            }
+            
         }
 
         public void ReadAll()
